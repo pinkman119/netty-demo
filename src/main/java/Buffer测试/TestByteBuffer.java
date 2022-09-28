@@ -46,5 +46,6 @@ public class TestByteBuffer {
             e.printStackTrace();
         }
         // 2.RandomAccessFile获取
+        System.out.println("hello");
     }
 }
