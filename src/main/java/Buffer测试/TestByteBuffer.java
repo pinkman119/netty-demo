@@ -47,6 +47,7 @@ public class TestByteBuffer {
         }
         // 2.RandomAccessFile获取
         System.out.println("hello");
+        System.out.println("这里是远程库更新的代码");
 
     }
 }
