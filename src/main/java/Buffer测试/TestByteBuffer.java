@@ -1,5 +1,7 @@
 package Buffer测试;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -13,6 +15,7 @@ import java.nio.channels.FileChannel;
  * @Date:2022/9/27 20:23
  * @Tips:
  */
+@Slf4j
 public class TestByteBuffer {
     public static void main(String[] args) {
         // FileChannel
@@ -25,7 +28,7 @@ public class TestByteBuffer {
 
             while (true){
                 int len = channel.read(byteBuffer);
-
+                log.debug("数量是" + String.valueOf(len));
                 if(len == -1){
                     break;
                 }
@@ -36,18 +39,19 @@ public class TestByteBuffer {
 
                 // 是否还有剩余未读数据
                 while (byteBuffer.hasRemaining()){
-                    byte b = byteBuffer.get();
+                    log.debug(String.valueOf((char)  byteBuffer.get()));
                 }
+                // 转换模式
                 byteBuffer.clear();
             }
+
+            // 当读取完成以后，再次读取，则实际上position指针又从1开始
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        // 2.RandomAccessFile获取
-        System.out.println("hello");
-        System.out.println("这里是远程库更新的代码");
 
     }
 }
